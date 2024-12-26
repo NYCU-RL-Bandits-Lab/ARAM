@@ -1,8 +1,8 @@
 # ARAM
 
-![](https://i.imgur.com/7Zuv6Jw.png)
+![The complete training process of ARAM.](https://github.com/user-attachments/assets/75a80bec-aa66-418b-a6b9-1f28d618fb88)
 
-**Q-Pensieve: Boosting Sample Efficiency of Multi-Objective RL Through Memory Sharing of Q-Snapshots**
+**Efficient Action-Constrained Reinforcement Learning via Acceptance-Rejection Method and Augmented MDPs**
 
 Wei Hung\*, [Shao-Hua Sun](https://shaohua0116.github.io/), [Ping-Chun Hsieh](https://pinghsieh.github.io/)
 
