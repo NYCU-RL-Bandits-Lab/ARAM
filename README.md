@@ -1,4 +1,5 @@
-# ARAM
+# ARAM: Efficient Action-Constrained Reinforcement Learning via Acceptance-Rejection Method and Augmented MDPs
+
 
 ![The complete training process of ARAM.](https://github.com/user-attachments/assets/75a80bec-aa66-418b-a6b9-1f28d618fb88)
 
