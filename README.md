@@ -74,8 +74,8 @@ Define a custom problem by specifying the environment and action constraints. Th
 | HalfCheetah      | \(\sum_{i=1}^6 |w_i a_i| \leq 20\) | HC+O_20 |
 | Ant              | \(\sum_{i=1}^8 |w_i a_i| \leq 2\) | An+L2_2 |
 | NSFnet           | \(\sum_{i \in \text{link}_j} a_i \leq 50, \ a_i^2 \leq 2, \ \forall j \in \{1,2,\ldots,8\}\) | NSFnetV2+S |
-| BSS5z            | \(\left|\sum_{i=1}^5 a_i - 150\right| \leq 5, \ a_i \leq 40\) | BSS5z+S+D40 |
-| BSS3z            | \(\left|\sum_{i=1}^3 a_i - 90\right| \leq 5, \ a_i \leq 40\) | BSS3z+S+D40 |
+| BSS5z            | \(\|\sum_{i=1}^5 a_i - 150\| \leq 5, \ a_i \leq 40\) | BSS5z+S+D40 |
+| BSS3z            | \(\|\sum_{i=1}^3 a_i - 90\| \leq 5, \ a_i \leq 40\) | BSS3z+S+D40 |
 
 ---
 
