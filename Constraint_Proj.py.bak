@@ -1765,47 +1765,6 @@ def Projection_Pu_S_ellipsoid2(state, action):
         return diffa2
     return diffa1
 
-def Projection_NSFnet(state, action):
-    with gp.Env(empty=True) as net_env:
-        net_env.setParam('OutputFlag', 0)
-        net_env.start()
-        with gp.Model(env=net_env) as net_m:
-            neta1=action[0]
-            neta2=action[1]
-            neta3=action[2]
-            neta4=action[3]
-            neta5=action[4]
-            neta6=action[5]
-            neta7=action[6]
-            neta8=action[7]
-            neta9=action[8]
-          
-            a1 = net_m.addVar(lb=-1, ub=1, name="a1", vtype=GRB.CONTINUOUS)
-            a2 = net_m.addVar(lb=-1, ub=1, name="a2", vtype=GRB.CONTINUOUS)
-            a3 = net_m.addVar(lb=-1, ub=1, name="a3", vtype=GRB.CONTINUOUS)
-            a4 = net_m.addVar(lb=-1, ub=1, name="a4", vtype=GRB.CONTINUOUS)
-            a5 = net_m.addVar(lb=-1, ub=1, name="a5", vtype=GRB.CONTINUOUS) 
-            a6 = net_m.addVar(lb=-1, ub=1, name="a6", vtype=GRB.CONTINUOUS)
-            a7 = net_m.addVar(lb=-1, ub=1, name="a7", vtype=GRB.CONTINUOUS)
-            a8 = net_m.addVar(lb=-1, ub=1, name="a8", vtype=GRB.CONTINUOUS)
-            a9 = net_m.addVar(lb=-1, ub=1, name="a9", vtype=GRB.CONTINUOUS)
-
-            obj = (a1-neta1)**2 + (a2-neta2)**2 + (a3-neta3)**2 + (a4-neta4)**2 + (a5-neta5)**2 + \
-                (a6-neta6)**2 + (a7-neta7)**2 + (a8-neta8)**2 + (a9-neta9)**2 
-            net_m.setObjective(obj,GRB.MINIMIZE)
-            
-        
-            net_m.addConstr(a1+a2+a4+a5<=-3) #16
-            net_m.addConstr(a3+a6<=-1) #17
-            net_m.addConstr(a1+a2+a4<=-2) #19 21
-            net_m.addConstr(a3+a5+a6<=-2) #22
-            net_m.addConstr(a2+a4+a7+a9<=-3) #23
-            net_m.addConstr(a1+a8<=-1) #24
-            net_m.addConstr(a2+a4+a9<=-2) #25
-            net_m.addConstr(a2+a3+a9<=-2) #27 #30
-            net_m.optimize()
-            return a1.X,a2.X,a3.X,a4.X,a5.X,a6.X,a7.X,a8.X,a9.X
-
 def Projection_NSFnetV3(state, action):
     with gp.Env(empty=True) as net_env:
         net_env.setParam('OutputFlag', 0)

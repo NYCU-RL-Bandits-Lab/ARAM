@@ -388,7 +388,7 @@ def Check_BSS5z_S2_D40_ver2(state, action):
     return a and b, 0
 
 
-def Check_NSFnet_ver2(state, action):
+def Check_NSFnet2(state, action):
     a1=action[0]
     a2=action[1]
     a3=action[2]
