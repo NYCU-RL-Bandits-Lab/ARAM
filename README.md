@@ -45,8 +45,8 @@ Run the following command to train the model with a specific problem setup:
 ```bash
 python main.py --env_id MO_reacher_L2_005-v0 --prob_id Re+L2_005 --start_steps 1000 --seed 1
 ```
-The `env_id` corresponds to a specific environment.
-The `prob_id` corresponds to a specific environment and its associated action constraints.
+- The `env_id` corresponds to a specific environment.
+- The `prob_id` corresponds to a specific environment and its associated action constraints.
 
 ### Testing
 
@@ -56,9 +56,9 @@ To evaluate a trained model, use:
 python eval.py --env_id MO_reacher_L2_005-v0 --prob_id Re+L2_005 --pref 0.1 0.9 --model_path /tmp/policy.pth 
 ```
 
-The `env_id` corresponds to a specific environment.
-The `prob_id` corresponds to a specific environment and its associated action constraints.
-The `pref` defines two preference weights for multi-objective evaluation.
+- The `env_id` corresponds to a specific environment.
+- The `prob_id` corresponds to a specific environment and its associated action constraints.
+- The `pref` defines two preference weights for multi-objective evaluation.
 
 ---
 
@@ -66,16 +66,17 @@ The `pref` defines two preference weights for multi-objective evaluation.
 
 Define a custom problem by specifying the environment and action constraints. The following table shows the action constraints for various environments:
 
-| **Environment** | **Action Constraint** | **prob_id** |
+| **Environment** | **prob_id** | **Action Constraint** |
 |------------------|------------------------|-------------|
-| HopperVel        | \(\sum_{i=1}^3 \max(w_i a_i, 0) \leq 10\) | H+M_10 |
-| Hopper           | \(\sum_{i=1}^3 \max(w_i a_i, 0) \leq 10\) | H+M_10 |
-| Reacher          | \(a_1^2 + a_2^2 \leq 0.05\) | Re+L2_005 |
-| HalfCheetah      | \(\sum_{i=1}^6 |w_i a_i| \leq 20\) | HC+O_20 |
-| Ant              | \(\sum_{i=1}^8 |w_i a_i| \leq 2\) | An+L2_2 |
-| NSFnet           | \(\sum_{i \in \text{link}_j} a_i \leq 50, \ a_i^2 \leq 2, \ \forall j \in \{1,2,\ldots,8\}\) | NSFnetV2+S |
-| BSS5z            | \(\|\sum_{i=1}^5 a_i - 150\| \leq 5, \ a_i \leq 40\) | BSS5z+S+D40 |
-| BSS3z            | \(\|\sum_{i=1}^3 a_i - 90\| \leq 5, \ a_i \leq 40\) | BSS3z+S+D40 |
+| HopperVel        | H+M_10 | $\sum_{i=1}^3 \max(w_i a_i, 0) \leq 10$ | 
+| Hopper           | H+M_10 | $\sum_{i=1}^3 \max(w_i a_i, 0) \leq 10$ | 
+| Reacher          | Re+L2_005 | $a_1^2 + a_2^2 \leq 0.05$ | 
+| HalfCheetah      | HC+O_20 | $\sum_{i=1}^6 \|w_i a_i\| \leq 20$ |
+| Ant              | An+L2_2 | $\sum_{i=1}^8 \|a_i * a_i\| \leq 2$ | 
+| NSFnet           | NSFnetV2+S | $\sum_{i \in \text{link}_j} a_i \leq 50$ | 
+| BSS3z            | BSS3z+S+D40 | $\|\sum_{i=1}^5 a_i - 90\| \leq 5, \ a_i \leq 40$ | 
+| BSS5z            | BSS5z+S+D40 | $\|\sum_{i=1}^3 a_i - 150\| \leq 5, \ a_i \leq 40$ | 
+
 
 ---
 
