@@ -13,12 +13,12 @@ DEFAULT_CAMERA_CONFIG = {
 }
 
 
-class HopperEnv_M_10_vel0_ccw_01(mujoco_env.MujocoEnv, utils.EzPickle):
+class HopperEnv_M_10(mujoco_env.MujocoEnv, utils.EzPickle):
     def __init__(
         self,
         xml_file="hopper.xml",
         forward_reward_weight=1.0,
-        ctrl_cost_weight=1e-1,
+        ctrl_cost_weight=1e-3,
         healthy_reward=1.0,
         terminate_when_unhealthy=True,
         healthy_state_range=(-100.0, 100.0),
@@ -48,7 +48,6 @@ class HopperEnv_M_10_vel0_ccw_01(mujoco_env.MujocoEnv, utils.EzPickle):
         self.np_random, seed = seeding.np_random(0)
         self._max_episode_steps = 1000
         self.max_episode_steps = 1000
-        self._goal_vel = 0
         self.steps = 0
         self.reward_num = 2
         mujoco_env.MujocoEnv.__init__(self, xml_file, 4)
@@ -63,7 +62,7 @@ class HopperEnv_M_10_vel0_ccw_01(mujoco_env.MujocoEnv, utils.EzPickle):
     def control_cost(self, action):
         control_cost = self._ctrl_cost_weight * np.sum(np.square(action))
         return control_cost
-        
+
     def control_cost_(self, action):
         control_cost = np.sum(np.square(action))
         return control_cost
@@ -105,7 +104,7 @@ class HopperEnv_M_10_vel0_ccw_01(mujoco_env.MujocoEnv, utils.EzPickle):
 
     def step(self, action):
         state = self._get_obs()
-        if(np.maximum((state[8:]*action),0).sum()<=10+1e-6):
+        if(np.maximum((state[8:]*action),0).sum()<=10):
             x_position_before = self.sim.data.qpos[0]
             self.do_simulation(action, self.frame_skip)
             x_position_after = self.sim.data.qpos[0]
@@ -114,8 +113,7 @@ class HopperEnv_M_10_vel0_ccw_01(mujoco_env.MujocoEnv, utils.EzPickle):
             ctrl_cost = self.control_cost(action)
             ctrl_cost_ = self.control_cost_(action)
 
-            forward_reward = -np.abs(x_velocity - self._goal_vel) + 1 # make it happy, not suicidal
-            #forward_reward = self._forward_reward_weight * x_velocity
+            forward_reward = self._forward_reward_weight * x_velocity
             healthy_reward = self.healthy_reward
 
             rewards = forward_reward + healthy_reward
@@ -130,8 +128,7 @@ class HopperEnv_M_10_vel0_ccw_01(mujoco_env.MujocoEnv, utils.EzPickle):
             ctrl_cost = self.control_cost(action)
             ctrl_cost_ = self.control_cost_(action)
 
-            forward_reward = -np.abs(x_velocity - self._goal_vel) + 1 # make it happy, not suicidal
-            #forward_reward = self._forward_reward_weight * x_velocity
+            forward_reward = self._forward_reward_weight * x_velocity
             healthy_reward = self.healthy_reward
     
             rewards = forward_reward + healthy_reward
@@ -173,4 +170,4 @@ class HopperEnv_M_10_vel0_ccw_01(mujoco_env.MujocoEnv, utils.EzPickle):
             else:
                 setattr(self.viewer.cam, key, value)
 
-register(id='MO_hopper_M_10_goal_vel0_ccw_01-v0', entry_point='environments.hopper_v3_M_10_goal_vel0_ccw_01:HopperEnv_M_10_vel0_ccw_01')
+register(id='MO_hopper_M_10-v0', entry_point='environments.hopper_v3_M_10:HopperEnv_M_10')
