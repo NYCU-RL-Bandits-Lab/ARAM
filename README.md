@@ -45,8 +45,8 @@ Run the following command to train the model with a specific problem setup:
 ```bash
 python main.py --env_id MO_reacher_L2_005-v0 --prob_id Re+L2_005 --start_steps 1000 --seed 1
 ```
-The `env_id` corresponds to a specific environment.
-The `prob_id` corresponds to a specific environment and its associated action constraints.
+- The `env_id` corresponds to a specific environment.
+- The `prob_id` corresponds to a specific environment and its associated action constraints.
 
 ### Testing
 
@@ -56,9 +56,9 @@ To evaluate a trained model, use:
 python eval.py --env_id MO_reacher_L2_005-v0 --prob_id Re+L2_005 --pref 0.1 0.9 --model_path /tmp/policy.pth 
 ```
 
-The `env_id` corresponds to a specific environment.
-The `prob_id` corresponds to a specific environment and its associated action constraints.
-The `pref` defines two preference weights for multi-objective evaluation.
+- The `env_id` corresponds to a specific environment.
+- The `prob_id` corresponds to a specific environment and its associated action constraints.
+- The `pref` defines two preference weights for multi-objective evaluation.
 
 ---
 
