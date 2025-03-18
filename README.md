@@ -6,7 +6,9 @@
 Wei Hung, [Shao-Hua Sun](https://shaohua0116.github.io/), [Ping-Chun Hsieh](https://pinghsieh.github.io/)
 
 ![The complete training process of ARAM.](https://github.com/user-attachments/assets/142c0c0a-21ce-43c7-9b53-780d967e0cc9)
-When an action is sampled from the policy, if it belongs to the feasible set, the transition is stored in the Replay Buffer (blue). Otherwise, the corresponding penalty transition is stored in the Augmented Replay Buffer, and another action is resampled (red). These stored transitions are then used to update the policy and critic networks.
+
+  When an action is sampled from the policy, if it belongs to the feasible set, the transition is stored in the Replay Buffer (blue). Otherwise, the corresponding penalty transition is stored in the Augmented Replay Buffer, and another action is resampled (red). These stored transitions are then used to update the policy and critic networks.
+
 ---
 
 ## Code Structure
