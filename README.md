@@ -5,7 +5,7 @@
 
 Wei Hung\*, [Shao-Hua Sun](https://shaohua0116.github.io/), [Ping-Chun Hsieh](https://pinghsieh.github.io/)
 
-![The complete training process of ARAM.](https://github.com/user-attachments/assets/75a80bec-aa66-418b-a6b9-1f28d618fb88)
+![The complete training process of ARAM.](https://github.com/user-attachments/assets/142c0c0a-21ce-43c7-9b53-780d967e0cc9)
 
 ---
 
